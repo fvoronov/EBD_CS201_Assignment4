@@ -50,4 +50,6 @@ rich_categories = list(filter(lambda x: x[1] > average_net_profit, net_profit_by
 rich_categories = sorted(rich_categories, key=lambda x: x[1], reverse=True)
 rich_categories = dict(rich_categories)
 
+with open("top_categories.json", "w", encoding="utf-8") as f:
+    json.dump(rich_categories, f)
 
