@@ -53,3 +53,6 @@ rich_categories = dict(rich_categories)
 with open("top_categories.json", "w", encoding="utf-8") as f:
     json.dump(rich_categories, f)
 
+df = pd.DataFrame(list(rich_categories.items()), columns=["category", "net_profit"])
+print(df)
+
