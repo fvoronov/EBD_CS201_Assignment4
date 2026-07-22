@@ -1,5 +1,6 @@
 import csv
 import json
+import pandas as pd
 
 with open("global_sales.csv", "r", encoding="utf-8") as f:
     reader = csv.DictReader(f)
@@ -42,3 +43,7 @@ for element in list_of_dictionaries:
         net_profit_by_categories[category] = element["net_profit"]
     else:
         net_profit_by_categories[category] += element["net_profit"]
+
+average_net_profit = sum(net_profit_by_categories.values()) / len(net_profit_by_categories)
+rich_categories = list(filter(lambda x: x[1] > average_net_profit, net_profit_by_categories.items()))
+
