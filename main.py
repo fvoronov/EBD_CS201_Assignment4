@@ -34,3 +34,11 @@ with open("cleaned_sales_updated.csv", "w", newline="", encoding="utf-8") as f:
     writer.writeheader()
     writer.writerows(list_of_dictionaries)
 
+net_profit_by_categories = {}
+
+for element in list_of_dictionaries:
+    category = element["product_category"]
+    if element["product_category"] not in net_profit_by_categories:
+        net_profit_by_categories[category] = element["net_profit"]
+    else:
+        net_profit_by_categories[category] += element["net_profit"]
